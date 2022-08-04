@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             KabupatenSeeder::class,
             KecamatanSeeder::class,
             DataSeeder::class,
+            distRandom::class,
         ]);
     }
 }

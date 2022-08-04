@@ -30,7 +30,6 @@
                     <div class="form-group">
                         <small><label for="">Kabupaten</label></small>
                         <select class="form-control" id="id_kabupaten" name="id_kabupaten">
-                            <option value="">Pilih</option>
                             @foreach ($kabupaten as $j)
                                 <option value="{{ $j->id }}">{{ $j->nama }}</option>
                             @endforeach
@@ -41,9 +40,8 @@
                     <div class="form-group">
                         <small><label for="">Tahun</label></small>
                         <select class="form-control" id="tahun" name="tahun">
-                            <option value="">Pilih</option>
                             @foreach ($tahun as $t)
-                                <option value="{{ $t->id }}">{{ $t->tahun }}</option>
+                                <option value="{{ $t->tahun }}">{{ $t->tahun }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -83,7 +81,15 @@
             processing: true,
             serverSide: true,
             rowId:"id",
-            ajax: "{{ route('data_dataTable') }}",
+            ajax: {
+                'url': "{{ route('data_dataTable') }}",
+                'type': "POST",
+                'data': function(d){
+                    d.id_kabupaten =$("#id_kabupaten").val();
+                    d.tahun =$("#tahun").val();
+                    d._token = '{{ csrf_token() }}';
+                }
+            },
             columns: [
                 {orderable:false,searchable:false,data:'DT_RowIndex',name: 'DT_RowIndex'},
                 {data: 'nama', name: 'nama'},
@@ -93,7 +99,16 @@
                 {data: 'produksi', name: 'produksi'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
-        });        
+        });      
+    
+        //onchange
+        $(document).on('change', '#id_kabupaten',function (e) {
+            table.ajax.reload();
+        });
+
+        $(document).on('change', '#tahun',function (e) {
+            table.ajax.reload();
+        });
     
 
      // menjalankan tombol tambah
