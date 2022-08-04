@@ -65,9 +65,13 @@ class KecamatanController extends Controller
         return response()->json(['status' => true, 'message' => 'berhasil']);
     }
 
-    public function DataTable()
+    public function DataTable(Request $request)
     {
-        $table = kecamatan::select('*');
+        if ($request->id_kabupaten == "all") {
+            $table = kecamatan::all();
+        }else{
+            $table = kecamatan::where('id_kabupaten', $request->id_kabupaten)->get();
+        }
         return DataTables::of($table)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

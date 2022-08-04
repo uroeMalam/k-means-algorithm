@@ -54,7 +54,6 @@ class DataController extends Controller
         $data['kabupaten'] = kabupaten::all();
         $data['kecamatan'] = kecamatan::all();
         $data['data'] = data::where('id', $id)->first();
-        $data['tahun'] = data::groupBy('tahun')->get();
         return view('data.edit', $data);
     }
 
@@ -79,9 +78,13 @@ class DataController extends Controller
         return response()->json(['status' => true, 'message' => 'berhasil']);
     }
 
-    public function DataTable()
+    public function DataTable(Request $request)
     {
-        $table = data::select('tb_data.*','tb_kecamatan.nama')->join('tb_kecamatan','tb_kecamatan.id' ,'=' ,'tb_data.id_kecamatan')->get();
+        $table = data::select('tb_data.*','tb_kecamatan.nama')
+                            ->join('tb_kecamatan','tb_kecamatan.id' ,'=' ,'tb_data.id_kecamatan')
+                            ->where('tb_data.id_kabupaten', $request->id_kabupaten)
+                            ->where('tb_data.tahun', $request->tahun)
+                            ->get();
         return DataTables::of($table)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

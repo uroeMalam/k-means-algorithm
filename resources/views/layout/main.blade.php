@@ -86,6 +86,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link  {{ Request::is('dataCenter') ? 'active':''}}" href="{{('dataCenter')}}">
+                  <i class="ni ni-align-center text-green"></i>
+                  <span class="nav-link-text">Data Center</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {{ Request::is('perhitungan') ? 'active':''}}" href="{{('perhitungan')}}">
                   <i class="ni ni-align-center text-green"></i>
                   <span class="nav-link-text">Data Hasil Perhitungan</span>

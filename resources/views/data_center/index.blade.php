@@ -14,11 +14,12 @@
         <div class="card-header">
             <div class="row">
             <div class="col">
-            <h2 class="mb-0">Kecamatan</h2>
+            <h2 class="mb-0">Data Center</h2>
             </div>
             <div class="col-auto">
             <div class="form-actions">
                 <div class="text-right">
+                <button type="submit" class="btn btn-danger btn-sm" id="hapusData" >Hapus</button>
                 <button type="submit" class="btn btn-info btn-sm" id="tambah" >Tambah</button>
                 </div>
             </div>
@@ -30,14 +31,24 @@
                     <div class="form-group">
                         <small><label for="">Kabupaten</label></small>
                         <select class="form-control" id="id_kabupaten" name="id_kabupaten">
-                            <option value="all">Pilih</option>
                             @foreach ($kabupaten as $j)
                                 <option value="{{ $j->id }}">{{ $j->nama }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <small><label for="">Tahun</label></small>
+                        <select class="form-control" id="tahun" name="tahun">
+                            @foreach ($tahun as $t)
+                                <option value="{{ $t->tahun }}">{{ $t->tahun }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
+            
         </div>
         <div class="card-body">
             <div class="table-responsive"> 
@@ -45,9 +56,12 @@
                 <thead class="thead-light">
                 <tr>
                     <th width="10%">No.</th>
-                    <th>Nama</th>
-                    <th>Kerangan</th>
-                    <th width="20%">Actions</th>
+                    <th>Center</th>
+                    <th>Luas Tanam</th>
+                    <th>Luas Panen</th>
+                    <th>Produktivitas</th>
+                    <th>Produksi</th>
+                    {{-- <th width="20%">Actions</th> --}}
                 </tr>
                 </thead>
             </table>
@@ -69,34 +83,45 @@
             serverSide: true,
             rowId:"id",
             ajax: {
-                'url': "{{ route('kecamatan_dataTable') }}",
+                'url': "{{ route('dataCenter_dataTable') }}",
                 'type': "POST",
                 'data': function(d){
                     d.id_kabupaten =$("#id_kabupaten").val();
+                    d.tahun =$("#tahun").val();
                     d._token = '{{ csrf_token() }}';
                 }
             },
             columns: [
                 {orderable:false,searchable:false,data:'DT_RowIndex',name: 'DT_RowIndex'},
-                {data: 'nama', name: 'nama'},
-                {data: 'ket', name: 'ket'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'center_name', name: 'center_name'},
+                {data: 'luas_tanam', name: 'luas_tanam'},
+                {data: 'luas_panen', name: 'luas_panen'},
+                {data: 'produktivitas', name: 'produktivitas'},
+                {data: 'produksi', name: 'produksi'},
+                // {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
-        });     
-        
+        });      
+    
         //onchange
         $(document).on('change', '#id_kabupaten',function (e) {
             table.ajax.reload();
         });
 
+        $(document).on('change', '#tahun',function (e) {
+            table.ajax.reload();
+        });
+    
+
      // menjalankan tombol tambah
      $(document).on('click', '#tambah',function (e) {
         e.preventDefault();
         let element = $(this);
+        const id_kabupaten = $("#id_kabupaten").val();
+        const tahun = $("#tahun").val();
         show_loading(element, "full");
         $.ajax({
             type: 'get',
-            url: "/kecamatan/tambah",
+            url: `/dataCenter/tambah/${id_kabupaten}/${tahun}`,
             success: function(data) {
             hide_loading(element, '', 'full', ' Tambah Data');
             $('#modalDialogLabel').html("Tambah Data")
@@ -117,7 +142,7 @@
           console.log('ok')
           show_loading("#btnCreate", "full");
           $.ajax({
-              url: '/kecamatan/simpan',
+              url: '/dataCenter/simpan',
               method: "POST",
               data: new FormData(this),
               dataType: 'JSON',
@@ -131,6 +156,12 @@
                       clearInput();
                       $('#modalDialog').modal("hide");
                       Swal.fire("Berhasil!", data.message, "success").then(function() {
+                          table.ajax.reload();
+                      });
+                    }else{
+                      clearInput();
+                      $('#modalDialog').modal("hide");
+                      Swal.fire("Maaf!", data.message, "error").then(function() {
                           table.ajax.reload();
                       });
                   }
@@ -152,7 +183,7 @@
         console.log(id);
         $.ajax({
             type: 'get',
-            url: "/kecamatan/edit/"+id,
+            url: "/data/edit/"+id,
             success: function(data) {
             hide_loading(element, 'edit', '', ' Edit');
             $('#modalDialogLabel').html("Edit")
@@ -172,7 +203,7 @@
         clear_error_withStyle()
         show_loading("#btnEdit", "");
         $.ajax({
-            url: `/kecamatan/update`,
+            url: `/data/update`,
             method: "POST",
             data: new FormData(this),
             dataType: 'JSON',
@@ -198,10 +229,12 @@
       
       $(document).on('click', '#hapusData', function(e) {
         e.preventDefault();
-        var url = "{{ route('kecamatan_destroy') }}";
+        const id_kabupaten = $("#id_kabupaten").val();
+        const tahun = $("#tahun").val();
+        var url = "{{ route('dataCenter_destroy') }}";
         var csrf= '{{ csrf_token() }}';
-        var dataText= $(this).attr('data-text');
-        var id= $(this).attr('data-id');
+        var dataText= tahun;
+        var id= id_kabupaten;
         deleteConfirm(url,table,dataText,csrf,id);
     });
     });

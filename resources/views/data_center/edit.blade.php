@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="tahun">Tahun</label>
+                    <label for="tahun">Tahun (masi ada bug)</label>
                     <select class="form-control" id="tahun" name="tahun" >
                         <option value="2019" {{($data->tahun == "2019") ? "selected" :""}}>2019</option>
                         <option value="2020" {{($data->tahun == "2020") ? "selected" :""}}>2020</option>
