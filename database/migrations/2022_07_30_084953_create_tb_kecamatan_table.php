@@ -20,6 +20,8 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
             $table->string('nama', 255);
+            $table->string('lat', 255)->nullable();
+            $table->string('lng', 255)->nullable();
             $table->string('ket', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();

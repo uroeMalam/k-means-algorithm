@@ -25,6 +25,18 @@ class PerhitunganController extends Controller
         return view('perhitungan.index', $data);
     }
 
+    public function getDataBy($id_kabupaten,$tahun)
+    {
+        $data = $this->rawData($tahun,$id_kabupaten);
+        echo json_encode($data);
+
+        // $hasil = "";
+        // foreach ($data as $key => $value) {
+        //     $hasil .= "<option>".$value['id']."</option>";
+        // }
+        // return view($hasil);
+    }
+
     public function DataTableTotal(Request $request)
     {
         $data = $this->rawData($request->tahun,$request->id_kabupaten);
@@ -416,11 +428,13 @@ class PerhitunganController extends Controller
         // new originData
         $returnData = [];
         for ($i=0; $i < $lenData; $i++) { 
-            $join = data::select('tb_kecamatan.nama','tb_data.*')->where('tb_data.id', $newClass[$i]['id'])->join('tb_kecamatan','tb_kecamatan.id','=','tb_data.id_kecamatan')->get();
+            $join = data::select('tb_kecamatan.nama','tb_kecamatan.lat','tb_kecamatan.lng','tb_data.*')->where('tb_data.id', $newClass[$i]['id'])->join('tb_kecamatan','tb_kecamatan.id','=','tb_data.id_kecamatan')->get();
             $temp = [];
             $temp['id'] = $newClass[$i]['id'];
             $temp['id_kabupaten'] = $newClass[$i]['id_kabupaten'];
             $temp['kecamatan'] = $join[0]['nama'];
+            $temp['lat'] = $join[0]['lat'];
+            $temp['lng'] = $join[0]['lng'];
             $temp['tahun'] = $newClass[$i]['tahun'];
             $temp['luas_tanam'] = $join[0]['luas_tanam'];
             $temp['luas_panen'] = $join[0]['luas_panen'];

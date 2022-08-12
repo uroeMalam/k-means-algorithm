@@ -33,6 +33,7 @@
    <!-- Page plugins -->
    <!-- Argon CSS -->
    <link rel="stylesheet" href="{{asset('template')}}/assets/css/argon.css?v=1.1.0" type="text/css">
+   @stack('page-css')
  </head>
  
  <body>
@@ -95,6 +96,12 @@
                 <a class="nav-link {{ Request::is('perhitungan') ? 'active':''}}" href="{{('perhitungan')}}">
                   <i class="ni ni-align-center text-green"></i>
                   <span class="nav-link-text">Data Hasil Perhitungan</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ Request::is('map') ? 'active':''}}" href="{{('map')}}">
+                  <i class="ni ni-align-center text-green"></i>
+                  <span class="nav-link-text">Data Dalam Peta</span>
                 </a>
               </li>
             </ul>
