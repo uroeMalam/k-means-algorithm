@@ -7,6 +7,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\DataCenterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\UtamaController;
 use App\Http\Controllers\PerhitunganController;
 use Illuminate\Support\Facades\Artisan;
@@ -84,7 +85,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/perhitungan', [PerhitunganController::class, 'index'])->name('perhitungan');
     Route::post('/perhitungan/data-table', [PerhitunganController::class, 'DataTable'])->name('perhitungan_dataTable');
     Route::post('/perhitungan/data-table-total', [PerhitunganController::class, 'DataTableTotal'])->name('perhitungan_dataTable_total');
-
+    Route::get('/perhitungan/getByData/{id_kabupaten}/{tahun}', [PerhitunganController::class, 'getDataBy'])->name('perhitungan_getByData');
+    
+    // Map
+    Route::get('/map', [MapController::class, 'index'])->name('map');
 
 });
 
