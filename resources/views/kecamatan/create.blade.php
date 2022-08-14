@@ -34,6 +34,22 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="lat">Latitud</label>
+                    <input type="number" class="form-control" id="lat" name="lat" value="" aria-describedby="lat">
+                    <small class="d-none text-danger" id="lat"></small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="lng">Longitut</label>
+                    <input type="number" class="form-control" id="lng" name="lng" value="" aria-describedby="lng">
+                    <small class="d-none text-danger" id="lng"></small>
+                </div>
+            </div>
+        </div>
         <div class="form-actions">
                 <div class="text-right">
                     <button type="submit" class="btn btn-success" id="btnCreate">simpan</button>
