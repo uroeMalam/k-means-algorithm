@@ -13,8 +13,15 @@ class UtamaController extends Controller
 
     public function index()
     {
-        $data['title'] = "/";
+        // map
+        $data['kabupaten'] =  kabupaten::all();        
+        $data['tahun'] = data::groupBy('tahun')->orderBy('id','desc')->get();
 
+        // table
+        $data['kabupaten'] = kabupaten::orderBy('id','desc')->get();
+        $data['kecamatan'] = kecamatan::all();
+        $data['tahun'] = data::groupBy('tahun')->orderBy('id','desc')->get();
+        $data['data'] = data::all();
         return view('user.utama', $data);
     }
 
