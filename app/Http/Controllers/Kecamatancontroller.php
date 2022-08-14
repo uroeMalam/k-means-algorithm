@@ -30,7 +30,9 @@ class KecamatanController extends Controller
         $data = $request->validate([
             'id_kabupaten'=>'required',
             'nama'=>'required',
-            'ket'=>''
+            'ket'=>'',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
         ]);
         kecamatan::create($data);
         return response()->json(['status' => true, 'message' => 'berhasil']);
@@ -55,6 +57,9 @@ class KecamatanController extends Controller
         kecamatan::where('id', $request->id)->update([
             'nama' => $request->nama,
             'ket' => $request->ket,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
+            
         ]);
         return response()->json(['status' => true, 'message' => 'berhasil']);
     }

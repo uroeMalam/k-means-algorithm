@@ -10,7 +10,7 @@
     <link href="{{ asset('datatables.net-bs4\css\dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('sweetalert2\dist\sweetalert2.min.css') }}">
      <!-- Favicon -->
-     <link rel="icon" href="{{asset('template')}}/assets/img/brand/favicon.png" type="image/png">
+     <link rel="icon" href="{{asset('template')}}/assets/img/brand/kosong.png" type="image/png">
      <!-- Fonts -->
      <link rel="stylesheet" href="{{asset('template')}}/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
      <!-- Icons -->
@@ -19,7 +19,7 @@
      <!-- Page plugins -->
      <!-- Argon CSS -->
      <link rel="stylesheet" href="{{asset('template')}}/assets/css/argon.css?v=1.1.0" type="text/css">
-     
+     {{-- woi map --}}
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
     <style>

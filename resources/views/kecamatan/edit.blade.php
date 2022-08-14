@@ -33,6 +33,22 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="lat">Latitude</label>
+                    <input type="number" class="form-control" id="lat" name="lat" value="{{ $data->lat }}" aria-describedby="lat">
+                    <small class="d-none text-danger" id="lat"></small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="lng">Longitud</label>
+                    <input type="number" class="form-control" id="lng" name="lng" value="{{  $data->lng  }}" aria-describedby="lng">
+                    <small class="d-none text-danger" id="lng"></small>
+                </div>
+            </div>
+        </div>
         <div class="form-actions">
                 <div class="text-right">
                     <button type="submit" class="btn btn-info" id="btnEdit">Simpan Perubahan</button>

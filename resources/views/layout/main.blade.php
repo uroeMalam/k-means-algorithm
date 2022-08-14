@@ -24,7 +24,7 @@
    <link href="{{ asset('datatables.net-bs4\css\dataTables.bootstrap4.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('sweetalert2\dist\sweetalert2.min.css') }}">
    <!-- Favicon -->
-   <link rel="icon" href="{{asset('template')}}/assets/img/brand/favicon.png" type="image/png">
+   <link rel="icon" href="{{asset('template')}}/assets/img/brand/kosong.png" type="image/png">
    <!-- Fonts -->
    <link rel="stylesheet" href="{{asset('template')}}/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
    <!-- Icons -->

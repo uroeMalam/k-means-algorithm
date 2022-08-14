@@ -46,7 +46,8 @@
                 <tr>
                     <th width="10%">No.</th>
                     <th>Nama</th>
-                    <th>Kerangan</th>
+                    <th>Latitude</th>
+                    <th>Longitud</th>
                     <th width="20%">Actions</th>
                 </tr>
                 </thead>
@@ -79,7 +80,8 @@
             columns: [
                 {orderable:false,searchable:false,data:'DT_RowIndex',name: 'DT_RowIndex'},
                 {data: 'nama', name: 'nama'},
-                {data: 'ket', name: 'ket'},
+                {data: 'lat', name: 'lat'},
+                {data: 'lng', name: 'lng'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });     

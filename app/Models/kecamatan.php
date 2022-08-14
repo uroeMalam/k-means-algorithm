@@ -16,6 +16,6 @@ class kecamatan extends Model
     protected $table = 'tb_kecamatan';
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'nama', 'ket', 'id_kabupaten',
+        'id', 'nama', 'ket', 'lat', 'lng', 'id_kabupaten',
     ];
 }
