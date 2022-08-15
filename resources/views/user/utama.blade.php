@@ -19,7 +19,7 @@
      <!-- Page plugins -->
      <!-- Argon CSS -->
      <link rel="stylesheet" href="{{asset('template')}}/assets/css/argon.css?v=1.1.0" type="text/css">
-     {{-- woi map --}}
+     {{-- memanggil map box --}}
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
     <style>
@@ -63,13 +63,13 @@
               </div>
             </div>
           </div>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <span class="nav-link-inner--text">Welcome kakak</span>
-              </a>
-            </li>
-          </ul>
+          <div>
+            <br>
+            <div class="pr-5">
+              <h1 class="display-2 text-white font-weight-bold mb-0">Sistem Informasi Geografis</h1>
+              <p class="display-4 text-white font-weight-light">Pemetaan Wilayah Produksi Padi</p>
+            </div>
+          </div>
           <hr class="d-lg-none" />
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item">
@@ -99,25 +99,25 @@
     <!-- Main content -->
     <div class="main-content">
       <!-- Header -->
-      <div class="header bg-primary pt-5 pb-7">
-        <div class="container">
+      <div class="header bg-primary pt-5 pb-6">
+        <div class="container bg-primary"> 
           <div class="header-body">
             <div class="row align-items-center">
-              <div class="col-lg-6">
+              {{-- <div class="col-lg-6">
                 <div class="pr-5">
                   <h1 class="display-2 text-white font-weight-bold mb-0">Sistem Informasi Geografis</h1>
                   <h2 class="display-4 text-white font-weight-light">Pemetaan Wilayah Produksi Padi</h2>
                   <p class="text-white mt-4">Webise Informasi Pemetaan Jumlah Produksi Padi Pada Kabbupaten Aceh Utara Dan Kota Lhokseumawe Yang dihitung Menggunakan  Metode K-Means Dan Ditampilkan Perkecamatan</p>
                 </div>
-              </div>
-              <div class="col-lg-6">
+              </div> --}}
+              {{-- <div class="col-lg-6">
                 <div class="card mb-8">
                   <div class="card-body">
                     <h5 class="h3">Tampilan Map</h5>
                     <p>mohon di isi dengan hal-hal positif</p>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
             <!-- Card header -->
             <div class="card-header">
                 <div class="row">
-                    <h2 class="ml-4">Data Dalam Peta</h2>
+                    <h2 class="ml-4">Map Wilayah Produksi Padi</h2>
                 </div>
             </div>
             <div class="card-body">
@@ -184,7 +184,7 @@
       {{-- map end --}}
 
       {{-- hasil --}}
-      <div class="py-6 pb-9 bg-default">
+      {{-- <div class="py-6 pb-9 bg-default">
         <div class="row justify-content-center text-left">
           <div class="col-md-6">
             <h2 class="display-4 text-white">Infromasi Tentang Aplikasi</h3>
@@ -193,7 +193,7 @@
               </p>
           </div>
         </div>
-      </div> 
+      </div>  --}}
       {{-- hasil end --}}    
     </div>
     <!-- Footer -->
@@ -201,8 +201,8 @@
       <div class="container">
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
-            <div class="copyright text-center text-xl-left text-muted">
-              &copy; 2022 <a href="#" class="font-weight-bold ml-1" target="#">Zsazsa Fakhriani Sistem Informasi Geografis</a>
+            <div class="copyright text-center text-xl-left text-primary">
+              &copy; 2022 <a class="font-weight-bold" target="#">Zsazsa Fakhriani Sistem Informasi Geografis</a>
             </div>
           </div>
         </div>
