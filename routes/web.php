@@ -100,3 +100,4 @@ Route::get('/token', function () {
 
 // dashboard depan
 Route::get('/', [UtamaController::class, 'index'])->name('utama');
+  
